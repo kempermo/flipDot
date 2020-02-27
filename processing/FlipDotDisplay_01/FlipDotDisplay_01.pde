@@ -5,11 +5,13 @@ Serial myPort;
 boolean serialConnected = false;
 
 Movie testMovie;
+PImage image;
 
 int flipDotWidth = 28;
 int flipDotHeight = 24;
 
 int flipDotPixels[];
+boolean displayImage = false;
 
 void setup()
 {
@@ -24,7 +26,7 @@ void setup()
   // open specific serial port
   try
   {
-    myPort = new Serial(this, "/dev/cu.usbmodem14621", 115200);
+    myPort = new Serial(this, "/dev/cu.usbmodem14101", 115200);
     serialConnected = true;
   }
   catch(Exception e)
@@ -37,12 +39,20 @@ void setup()
   testMovie = new Movie(this, "Flickermood.mp4");
   testMovie.loop();
   
-  frameRate(5);
+  image = loadImage("image.png");
+  
+  frameRate(1);
 }
 
 void draw()
 {
-  image(testMovie, 0, 0);
+  //image(testMovie, 0, 0);
+  background(0);
+  
+  if(displayImage)
+  {
+    image(image,0,0);
+  }
   
   int scale = width/flipDotWidth;
   PVector position = new PVector();
@@ -106,4 +116,16 @@ void sendValue(int _x, int _y, int _value)
 
 void movieEvent(Movie m) {
   m.read();
+}
+
+void keyPressed()
+{
+  switch(key)
+  {
+    case 'a':
+      displayImage =! displayImage;
+    break;
+    case 's':
+    break;
+  }
 }

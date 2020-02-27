@@ -21,6 +21,7 @@ void setup()
 
 void loop(void)
 {
+
   // check if data is available
   if (Serial.available() > 0)
   {
@@ -29,13 +30,16 @@ void loop(void)
 
     // split data and write to incomingValues
     split(str, incomingValues, NUM_VALUES);
+
+    if (incomingValues[0] < DISPLAY_WIDTH && incomingValues[1] <= DISPLAY_HEIGHT)
+    {
+      flipdot_pixel(incomingValues[0], incomingValues[1], incomingValues[3]);
+    }
   }
 
-  flipdot_pixel(incomingValues[0], incomingValues[1], incomingValues[3]);
-    
   /*
-  for (int x = 0; x < DISPLAY_WIDTH; x++)
-  {
+    for (int x = 0; x < DISPLAY_WIDTH; x++)
+    {
     for (int y = 0; y <= DISPLAY_HEIGHT; y++)
     {
       flipdot_pixel(x, y, 1);
@@ -51,30 +55,29 @@ void loop(void)
       delay(0);
       //Serial.println(y);
     }
-  }
-  
-  for (int y = 0; y <= DISPLAY_HEIGHT; y++)
-  {
+    }
+
+    for (int y = 0; y <= DISPLAY_HEIGHT; y++)
+    {
     for (int x = 0; x < DISPLAY_WIDTH; x++)
     {
       flipdot_pixel(x, y, 1);
       /*
-      delay(5);
-      if (y == 0)
-      {
+        delay(5);
+        if (y == 0)
+        {
         flipdot_pixel(x - 1, DISPLAY_HEIGHT, 0);
-      }
-      else
-      {
+        }
+        else
+        {
         flipdot_pixel(x, y - 1, 0);
-      }
-      delay(0);
-      //Serial.println(y);
-      
+        }
+        delay(0);
+        //Serial.println(y);
     }
-  }
+    }
 
-  flipdot_cls(0);
+    flipdot_cls(0);
   */
 }
 
