@@ -4,7 +4,7 @@ uint8_t PANELS;
 
 const uint8_t PANEL_LEFT = 0xFE;
 const uint8_t TXTZEICHEN_ZEILE = 23;
-uint16_t DISPLAYDELAY = 1000;           // 800 bei LED, 15 nur Dots (200 besser) aber man kann einfach 2 x schreiben
+uint16_t DISPLAYDELAY = 600;           // 800 bei LED, 15 nur Dots (200 besser) aber man kann einfach 2 x schreiben
 
 void flipdot_pixel (uint8_t, uint8_t, uint8_t);
 void send_data (uint8_t, uint8_t);
