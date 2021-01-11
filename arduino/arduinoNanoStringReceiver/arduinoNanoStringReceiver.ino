@@ -51,8 +51,8 @@ void loop()
 
   if (newTextAvailable)
   {
-    ww.setAll(0);
-    ww.resetAll(0);
+    //ww.setAll(0);
+    //ww.resetAll(0);
 
     ww.mReset();
     ww.mDrawString(10, 1, textToDisplay);
