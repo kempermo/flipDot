@@ -20,6 +20,8 @@
 #include "fonts/dotCousine_Bold_v02.h"
 wwFlipGFX ww;
 
+#define DELAYPOWERON 5000
+
 String textToDisplay = "";
 boolean newTextAvailable = false;
 
@@ -53,7 +55,7 @@ void loop()
     ww.resetAll(0);
 
     ww.mReset();
-    ww.mDrawString(10, 1, output);
+    ww.mDrawString(10, 1, textToDisplay);
     ww.mUpdate();
 
     newTextAvailable = false;
